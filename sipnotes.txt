@@ -1,0 +1,86 @@
+"Alice REGISTER to A REGISTRAR PROXY"
+Phone (UA)                                  PROXY (alta3.com)
+1011
+
+REGISTER sip:alta3.com --------------------->
+To: 1011@alta3.com (Address of Record)
+From: 1011@alta3.com
+Contact: 1011@IPaddress;expires=7200
+Expires: 7200
+
+<------------------------------------------- 401 (RAND)
+
+REGISTER sip:alta3.com --------------------->
+To: 1011@alta3.com (Address of Record)
+From: 1011@alta3.com
+Contact: 1011@IPaddress;expires=7200
+Expires: 7200
+Authorization: (HASH + all the values to make
+                the hash EXCEPT your password)
+
+<------------------------------------------- 200 "Engage (OK)"
+                                             Expires: 1800
+
+
+
+
+
+
+
+
+
+REGISTER sip:attims.com ------------------------>
+To: 17175553729@attims.com
+From: 17175553729@attims.com
+Contact: 17175553729@IPv6
+
+
+
+
+
+
+
+"Alice calls Bob"
+Phone (UA)          PROXY                  Phone (UA)
+
+INVITE -------------->
++ SDP
+
+<------------------100
+                     INVITE -------------------->
+                     + SDP
+                     <-------------------------- 100
+
+<------------------- <-------------------------- 180 Ringing
+
+<------------------- <-------------------------- 200 OK (pickup)
+                                                 + SDP
+
+ACK -----------------> ------------------------->
+
+
+<=================== RTP =========================>
+         (real-time transport protocol) (~200 ms)
+
+<----------------------------------------------- BYE
+
+200 -------------------------------------------->
+
+
+
+"Alice calls Bob, Bob pressed END (red button) to not accept call"
+Phone (UA)          PROXY                  Phone (UA)
+
+INVITE -------------->
++ SDP
+
+<------------------100
+                     INVITE -------------------->
+                     + SDP
+                     <-------------------------- 100
+
+<------------------- <-------------------------- 180 Ringing
+
+<------------------- <-------------------------- 486 Busy Here
+
+ACK -----------------> ------------------------->
